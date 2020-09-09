@@ -147,7 +147,7 @@ for (my $i = $starting_col; $i < $num_cols; $i++) {
 			$count++;
 				
 		# Missing data
-		} elsif ($nuc eq './') {
+		} elsif ($nuc eq './' || $nuc eq './.') {
 			print '-';
 			$count++;
 		

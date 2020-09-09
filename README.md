@@ -2,9 +2,9 @@
 
 ## Quick Start Instructions
 
-Download script from [this Google Drive folder](https://drive.google.com/folderview?id=0B3JtKm_03RZDRmVPWk96ZEZHOHc&usp=sharing "Download link")
+(Cloned from old Google Code repository.)
 
-This is a tiny script to take all the SNPs in a VCF tabular file and concatenate them into a FASTA alignment. The tabular input file is created using the [VCFtools](http://vcftools.sourceforge.net/) utility [vcf-to-tab](http://vcftools.sourceforge.net/perl_module.html#vcf-to-tab):
+This is a tiny script to take all the SNPs in a VCF tabular file and concatenate them into a FASTA alignment. The tabular input file is created using the [VCFtools](https://vcftools.github.io/index.html) utility [vcf-to-tab](https://vcftools.github.io/perl_module.html#vcf-to-tab):
 
 	zcat input.vcf.gz | vcf-to-tab > snps.tab
 
@@ -15,7 +15,7 @@ This will make a file that looks like this:
 	chr10	94056	T	./	./	./	./	./	C/C
 	chr10	94180	G	./	A/A	./	./	./	./
 
-Hopefully with less missing data. Then you can convert this into a FASTA alignment with:
+Hopefully with fewer missing data. Then you can convert this into a FASTA alignment with:
 
 	perl vcf_tab_to_fasta_alignment.pl -i snps.tab > all_snps.fasta
 
@@ -31,13 +31,13 @@ Add the optional `--output_ref` flag to output the reference genome allele:
 
 ## Mini Example
 
-First check out the script and associated data with this command:
+First download the script and associated data by using the download link on GitHub or check out the repository with command:
 
-	svn checkout http://vcf-tab-to-fasta.googlecode.com/svn/trunk/ vcf-tab-to-fasta
+        git clone https://github.com/bergeycm/vcf-tab-to-fasta.git
 
 This should download everything into a directory named vcf-tab-to-fasta. There are some 
 small vcf-tab example files in the example\_data directory, named chr22snps\_head.tab and 
-chrYsnps\_head.tab. These were created using the [VCFtools](http://vcftools.sourceforge.net/) utility [vcf-to-tab](http://vcftools.sourceforge.net/perl_module.html#vcf-to-tab):
+chrYsnps\_head.tab. These were created using the [VCFtools](https://vcftools.github.io/index.html) utility [vcf-to-tab](https://vcftools.github.io/perl_module.html#vcf-to-tab):
 
 Once that's done, move into the directory:
 
@@ -124,10 +124,9 @@ Make a tabular VCF file with [VCFtools](http://vcftools.sourceforge.net/) utilit
 	zcat ALL.chr22.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz | vcf-to-tab > chr22snps.tab
 	zcat ALL.chrY.phase1_samtools_si.20101123.snps.low_coverage.genotypes.vcf.gz  | vcf-to-tab > chrYsnps.tab
 
-Download script from [this Google Drive folder](https://drive.google.com/folderview?id=0B3JtKm_03RZDRmVPWk96ZEZHOHc&usp=sharing "Download link")
+Download [script via GitHub](https://raw.githubusercontent.com/bergeycm/vcf-tab-to-fasta/master/vcf_tab_to_fasta_alignment.pl)
 
 Finally, concatenate SNPs into a FASTA format file with `vcf_tab_to_fasta_alignment`:
 
 	perl vcf_tab_to_fasta_alignment.pl -i chr22snps.tab > chr22snps.fasta
 	perl vcf_tab_to_fasta_alignment.pl -i chrYsnps.tab  > chrYsnps.fasta
-
